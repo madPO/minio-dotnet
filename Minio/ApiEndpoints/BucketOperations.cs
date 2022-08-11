@@ -218,7 +218,8 @@ public partial class MinioClient : IBucketOperations
                             .WithContinuationToken(nextContinuationToken)
                             .WithMarker(marker)
                             .WithListObjectsV1(!args.UseV2)
-                            .WithVersionIdMarker(versionIdMarker);
+                            .WithVersionIdMarker(versionIdMarker)
+                            .WithHeaders(args.Headers);
                         if (args.Versions)
                         {
                             var objectList = await GetObjectVersionsListAsync(goArgs, cts.Token).ConfigureAwait(false);

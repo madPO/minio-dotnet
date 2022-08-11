@@ -242,7 +242,7 @@ public partial class MinioClient
     internal async Task<HttpRequestMessageBuilder> CreateRequest<T>(BucketArgs<T> args) where T : BucketArgs<T>
     {
         ArgsCheck(args);
-        var requestMessageBuilder = await CreateRequest(args.RequestMethod, args.BucketName).ConfigureAwait(false);
+        var requestMessageBuilder = await CreateRequest(args.RequestMethod, args.BucketName, headerMap: args.Headers).ConfigureAwait(false);
         return args.BuildRequest(requestMessageBuilder);
     }
 
